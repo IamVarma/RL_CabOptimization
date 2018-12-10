@@ -3,6 +3,7 @@
 import numpy as np
 import math
 import random
+from itertools import permutations,product
 
 # Defining hyperparameters
 m = 5 # number of cities, ranges from 1 ..... m
@@ -16,8 +17,9 @@ class CabDriver():
 
     def __init__(self):
         """initialise your state and define your action space and state space"""
-        self.action_space = 
-        self.state_space = 
+        self.action_space = list(permutations(range(1,m+1), 2))
+        self.action_space.append((0,0))
+        self.state_space = list(product(*[list(range(1,m+1)), list(range(0,t)), list(range(0,d))]))
         self.state_init = 
 
         # Start the first round
